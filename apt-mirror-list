@@ -26,7 +26,7 @@ for my $dist ( sort keys %{ $conf{dists} } ) {
             }
         }
         for my $extra ( sort keys %{ $conf{'debian-installer'} } ) {
-            #  FIXME: remove when debian-installer available for natty
+            # debian-installer available only in main for unreleased dists
             next if !$conf{dists}{$dist} and $extra ne '';
             for my $component ( @{ $conf{'debian-installer'}{$extra} } ) {
                 say $conf{deb}{$arch}, $conf{uri}, "$dist$extra", "$component/debian-installer";
