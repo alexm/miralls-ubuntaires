@@ -46,7 +46,7 @@ __DATA__
 # set skel_path    $base_path/skel
 # set var_path     $base_path/var
 # set cleanscript $var_path/clean.sh
-set defaultarch i386 
+set defaultarch i386
 # set postmirror_script $var_path/postmirror.sh
 set run_postmirror 0
 set nthreads     20
