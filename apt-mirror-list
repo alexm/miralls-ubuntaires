@@ -21,14 +21,14 @@ for my $dist ( sort keys %{ $conf{dists} } ) {
     for my $arch ( sort keys %{ $conf{deb} } ) {
         for my $component ( @{ $conf{components} } ) {
             say $conf{deb}{$arch}, $conf{uri}, $dist, $component;
-            for my $extra ( @{ $conf{'extra-dists'} } ) {
+            for my $extra ( @{ $conf{extra} } ) {
                 say $conf{deb}{$arch}, $conf{uri}, "$dist$extra", $component
             }
         }
-        for my $extra ( sort keys %{ $conf{'debian-installer'} } ) {
+        for my $extra ( sort keys %{ $conf{installer} } ) {
             # debian-installer available only in main for unreleased dists
             next if !$conf{dists}{$dist} and $extra ne '';
-            for my $component ( @{ $conf{'debian-installer'}{$extra} } ) {
+            for my $component ( @{ $conf{installer}{$extra} } ) {
                 say $conf{deb}{$arch}, $conf{uri}, "$dist$extra", "$component/debian-installer";
             }
         }
