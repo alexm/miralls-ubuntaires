@@ -32,12 +32,6 @@ for my $dist ( sort keys %{ $conf{dists} } ) {
                 say $conf{deb}{$arch}, $conf{uri}, "$dist$extra", "$component/debian-installer";
             }
         }
-        next unless $dist eq 'precise';
-        for my $extra ( keys %{ $conf{'installer-arch'} } ) {
-            for my $component ( @{ $conf{'installer-arch'}{$extra} } ) {
-                say $conf{deb}{$arch}, $conf{uri}, "$dist$extra", "$component/installer-$arch";
-            }
-        }
     }
 }
 
