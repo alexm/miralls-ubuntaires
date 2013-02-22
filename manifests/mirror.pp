@@ -28,6 +28,8 @@ class mirror {
   exec {
     'apt-mirror-index':
       command => '/usr/bin/sudo -H -u apt-mirror -s /home/vagrant/apt-mirror-index',
+      # downloading indices may take a while
+      timeout => 3600,
       require => [
         File['/etc/apt/mirror.list'],
         File['/home/vagrant/apt-mirror-index']
