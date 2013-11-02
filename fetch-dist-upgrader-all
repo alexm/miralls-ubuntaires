@@ -1,0 +1,16 @@
+#!/bin/sh
+
+RUN_AS_APT_MIRROR="su - apt-mirror -c"
+DISTS_ALIVE="lucid precise quantal raring saucy"
+MIRROR="http://ftp.caliu.cat"
+WGET="wget -q -r -l 1"
+
+for dist in ${DISTS_ALIVE}
+do
+    for dir in ${dist} ${dist}-updates ${dist}-security
+    do
+        $RUN_AS_APT_MIRROR "cd mirror && ${WGET} ${MIRROR}/ubuntu/dists/${dir}/main/dist-upgrader-all/current/"
+        [ $? -ne 0 ] && echo -n "not "
+        echo "ok - $dir"
+    done
+done
