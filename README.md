@@ -46,10 +46,11 @@ Serveis del servidor
     *   interfaces
     *   dnsmasq.conf
 *   iptables
-    *   iptables-nat
+    *   mirror-nat
 *   apt-mirror
     *   mirror-list
-    *   dist-upgrader-all
+    *   mirror-upgrader
+    *   mirror-changelogs
 *   apache2
 
 Configuració dels miralls
@@ -75,6 +76,8 @@ Genereu la llista de fonts del mirall:
 Actualitzeu el mirall:
 
     # su - apt-mirror -c apt-mirror
+    # su - apt-mirror -c mirror-upgrader
+    # su - apt-mirror -c mirror-changelogs
 
 Si avorteu la sincronització del mirall i us cal esborrar el bloqueig, feu:
 
@@ -85,7 +88,7 @@ Neteja dels miralls obsolets
 
 Després d'una actualització o purga d'un mirall us pot interessar fer net:
 
-    $ sudo ~apt-mirror/var/clean.sh
+    # su - apt-mirror -c ~apt-mirror/var/clean.sh
 
 Introducció de nous miralls
 ---------------------------
@@ -100,19 +103,19 @@ Servidor
 
 Poseu en marxa la interfície LAN:
 
-    $ sudo ifconfig eth2 10.0.0.10 netmask 255.0.0.0
+    $ sudo ip address add 10.0.0.10/8 dev eth2
 
 Encengueu el dnsmasq:
 
-    $ sudo invoke-rc.d dnsmasq restart
+    $ sudo service dnsmasq restart
 
 Encengueu l'apache:
 
-    $ sudo invoke-rc.d apache2 restart
+    $ sudo service apache2 restart
 
 Si voleu fer NAT amb la WiFi:
 
-    $ sudo /usr/local/bin/iptables-nat
+    $ sudo /usr/local/bin/mirror-nat
 
 Clients
 -------

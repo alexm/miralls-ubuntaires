@@ -53,6 +53,16 @@ for my $dist ( @{ $cfg{dists} } ) {
                 say $cfg{deb}{$arch}, $cfg{uri}, "$dist$extra", "$component/debian-installer";
             }
         }
+        #
+        # This was needed sometime in the past, not anymore?
+        #
+        #if ( $dist eq 'precise' ) {
+        #    for my $extra ( keys %{ $cfg{'installer-arch'} } ) {
+        #        for my $component ( @{ $cfg{'installer-arch'}{$extra} } ) {
+        #            say $cfg{deb}{$arch}, $cfg{uri}, "$dist$extra", "$component/installer-$arch";
+        #        }
+        #    }
+        #}
     }
 }
 
