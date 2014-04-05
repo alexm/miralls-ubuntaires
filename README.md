@@ -31,7 +31,7 @@ Instal·lació bàsica del servidor
     *   La primera de tipus Linux (83) per al /boot amb mida entre 250 MB.
     *   La segona de tipus Linux LVM (8e) per al sistema amb la resta del disc.
     *   La segona partició serà el volum físic d'un grup de volums anomenat ubuntaires, que conté aquests volums lògics:
-    *   *   root per al sistema, amb 8 GB.
+        *   root per al sistema, amb 8 GB.
         *   swap per al fitxer d'intercanvi, amb 2 GB.
         *   mirror per als miralls, amb la mida que calculeu que us cal (uns quants centenars de GB).
     *   No assigneu tot l'espai disponible als miralls per si us cal ampliar algun dels altres volums lògics en algun moment.
@@ -60,23 +60,23 @@ TBD
 Actualització dels miralls
 --------------------------
 
-*   Convertiu-vos en root:
+Convertiu-vos en root:
 
     $ sudo -i
 
-*   Obtingueu una IP pel cable:
+Obtingueu una IP pel cable:
 
     # dhclient eth2
 
-*   Genereu la llista de fonts del mirall:
+Genereu la llista de fonts del mirall:
 
     # /usr/local/bin/mirror-list > /etc/apt/mirror.list
 
-*   Actualitzeu el mirall:
+Actualitzeu el mirall:
 
     # su - apt-mirror -c apt-mirror
 
-*   Si avorteu la sincronització del mirall i us cal esborrar el bloqueig, feu:
+Si avorteu la sincronització del mirall i us cal esborrar el bloqueig, feu:
 
     # rm ~apt-mirror/var/apt-mirror.lock
 
@@ -90,7 +90,7 @@ Després d'una actualització o purga d'un mirall us pot interessar fer net:
 Introducció de nous miralls
 ---------------------------
 
-Editeu l'ordre mirror-list i afegiu la nova distribució a la llista *dists*.
+Editeu l'ordre **mirror-list** i afegiu la nova distribució a la llista ***dists***.
 
 Preparació de la festa
 ======================
@@ -98,19 +98,19 @@ Preparació de la festa
 Servidor
 --------
 
-*   Poseu en marxa la interfície LAN:
+Poseu en marxa la interfície LAN:
 
     $ sudo ifconfig eth2 10.0.0.10 netmask 255.0.0.0
 
-*   Encengueu el dnsmasq:
+Encengueu el dnsmasq:
 
     $ sudo invoke-rc.d dnsmasq restart
 
-*   Encengueu l'apache:
+Encengueu l'apache:
 
     $ sudo invoke-rc.d apache2 restart
 
-*   Si voleu fer NAT amb la WiFi:
+Si voleu fer NAT amb la WiFi:
 
     $ sudo /usr/local/bin/iptables-nat
 
