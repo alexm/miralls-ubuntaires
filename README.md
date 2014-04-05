@@ -125,6 +125,16 @@ Editeu l'ordre **mirror-list** i afegiu la nova distribució a la llista ***dist
 Preparació de la festa
 ======================
 
+Maquinari
+---------
+
+*   Un ordinador portàtil que pugui arrencar un disc dur del port USB i que pugui tenir connexió WiFi.
+*   El disc extern dels miralls.
+*   Un cable USB per endollar el disc dur extern en un port USB del portàtil.
+*   Un cable de xarxa creuat o un de directe, si el portàtil és capaç de fer crossover automàticament (la majoria d'ordinadors moderns ja tenen aquesta característica).
+*   Un commutador de xarxa amb ports suficients pel servidor i la resta d'ordinadors de la festa.
+*   Un cable directe per cada ordinador que faci de client a la festa.
+
 Servidor
 --------
 
