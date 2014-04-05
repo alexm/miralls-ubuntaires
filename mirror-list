@@ -26,21 +26,19 @@ my %cfg = (
         -updates  => [qw( main                                )],
         -security => [qw(                                     )],
     },
-    dists => [qw(
-        saucy
-        raring
-        precise
-        lucid
-    )],
     'extra-dists' => [qw( -security -updates )],
     uri => 'http://ftp.caliu.cat/ubuntu',
 );
+
+$ENV{MIRRORS} ||= '/usr/local/etc/mirrors.conf';
+my @dists = qx|egrep '^[a-z]+\$' $ENV{MIRRORS}|;
+chomp(@dists);
 
 print <DATA>;
 
 local $, = q( );
 
-for my $dist ( @{ $cfg{dists} } ) {
+for my $dist (@dists) {
     for my $arch ( keys %{ $cfg{deb} } ) {
         for my $component ( @{ $cfg{components} } ) {
             say $cfg{deb}{$arch}, $cfg{uri}, $dist, $component;

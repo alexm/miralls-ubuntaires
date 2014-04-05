@@ -1,7 +1,8 @@
 #!/bin/sh
 
 RUN_AS_APT_MIRROR="su - apt-mirror -c"
-DISTS_ALIVE="lucid precise raring saucy"
+[ -z "$MIRRORS" ] && MIRRORS="/usr/local/etc/mirrors.conf"
+DISTS_ALIVE=$(egrep '^[a-z]+$' $MIRRORS)
 MIRROR="http://ftp.caliu.cat"
 WGET="wget -q -r -l 1"
 

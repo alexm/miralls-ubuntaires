@@ -48,6 +48,7 @@ Serveis del servidor
 *   iptables
     *   mirror-nat
 *   apt-mirror
+    *   mirrors.conf
     *   mirror-list
     *   mirror-upgrader
     *   mirror-changelogs
@@ -84,6 +85,12 @@ Instal·leu el paquet **apache2** i executeu les ordres següents per servir els
 Copieu a */usr/local/bin* els guions que necessitareu més endavant:
 
     $ sudo cp mirror-list mirror-upgrader mirror-changelogs mirror-nat /usr/local/bin
+    $ sudo chmod 0755 /usr/local/bin/mirror-*
+
+Copieu a */usr/local/etc* la configuració de quines distribucions ha d'incloure el mirall:
+
+    $ sudo cp mirrors.conf /usr/local/etc/mirrors.conf
+    $ sudo chmod 0644 /usr/local/etc/mirrors.conf
 
 Actualització dels miralls
 --------------------------
