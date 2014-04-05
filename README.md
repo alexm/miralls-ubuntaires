@@ -59,70 +59,64 @@ Configuració dels miralls
 
 Copieu la configuració de les interfícies de xarxa:
 
-    $ sudo cp -b interfaces /etc/network/interfaces
+    sudo cp -b interfaces /etc/network/interfaces
 
 Instal·leu el paquet **dnsmasq** i copieu la configuració a **/etc/dnsmasq.conf**:
 
-    $ sudo cp -b dnsmasq.conf /etc/dnsmasq.conf
+    sudo cp -b dnsmasq.conf /etc/dnsmasq.conf
 
 Instal·leu el paquet **apt-mirror** i executeu les ordres següents per preparar els miralls:
 
-    $ sudo -i
-    # cd ~apt-mirror/mirror
-    # ln -s ftp.caliu.cat archive.ubuntu.com
-    # ln -s archive.ubuntu.com es.archive.ubuntu.com
-    # ln -s archive.ubuntu.com ad.archive.ubuntu.com
-    # ln -s archive.ubuntu.com us.archive.ubuntu.com
-    # ln -s archive.ubuntu.com rsync.archive.ubuntu.com
+    cd ~apt-mirror/mirror
+    sudo ln -s ftp.caliu.cat archive.ubuntu.com
+    sudo ln -s archive.ubuntu.com es.archive.ubuntu.com
+    sudo ln -s archive.ubuntu.com ad.archive.ubuntu.com
+    sudo ln -s archive.ubuntu.com us.archive.ubuntu.com
+    sudo ln -s archive.ubuntu.com rsync.archive.ubuntu.com
 
 Instal·leu el paquet **apache2** i executeu les ordres següents per servir els mirralls:
 
-    $ sudo -i
-    # cd /var/www
-    # ln -s ../spool/apt-mirror/mirror/changelogs.ubuntu.com changelogs
-    # ln -s ../spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu ubuntu
+    cd /var/www
+    sudo ln -s ../spool/apt-mirror/mirror/changelogs.ubuntu.com changelogs
+    sudo ln -s ../spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu ubuntu
 
 Copieu a */usr/local/bin* els guions que necessitareu més endavant:
 
-    $ sudo cp mirror-list mirror-upgrader mirror-changelogs mirror-nat /usr/local/bin
-    $ sudo chmod 0755 /usr/local/bin/mirror-*
+    sudo cp mirror-list mirror-upgrader mirror-changelogs mirror-nat /usr/local/bin
+    sudo chmod 0755 /usr/local/bin/mirror-*
 
 Copieu a */usr/local/etc* la configuració de quines distribucions ha d'incloure el mirall:
 
-    $ sudo cp mirrors.conf /usr/local/etc/mirrors.conf
-    $ sudo chmod 0644 /usr/local/etc/mirrors.conf
+    sudo cp mirrors.conf /usr/local/etc/mirrors.conf
+    sudo chmod 0644 /usr/local/etc/mirrors.conf
 
 Actualització dels miralls
 --------------------------
 
-Convertiu-vos en root:
-
-    $ sudo -i
-
 Obtingueu una IP pel cable:
 
-    # dhclient eth2
+    sudo dhclient eth2
 
 Genereu la llista de fonts del mirall:
 
-    # /usr/local/bin/mirror-list > /etc/apt/mirror.list
+    /usr/local/bin/mirror-list | sudo tee /etc/apt/mirror.list
 
 Actualitzeu el mirall:
 
-    # su - apt-mirror -c apt-mirror
-    # su - apt-mirror -c mirror-upgrader
-    # su - apt-mirror -c mirror-changelogs
+    sudo su - apt-mirror -c apt-mirror
+    sudo su - apt-mirror -c mirror-upgrader
+    sudo su - apt-mirror -c mirror-changelogs
 
 Si avorteu la sincronització del mirall i us cal esborrar el bloqueig, feu:
 
-    # rm ~apt-mirror/var/apt-mirror.lock
+    sudo rm ~apt-mirror/var/apt-mirror.lock
 
 Neteja dels miralls obsolets
 ----------------------------
 
 Després d'una actualització o purga d'un mirall us pot interessar fer net:
 
-    # su - apt-mirror -c ~apt-mirror/var/clean.sh
+    sudo su - apt-mirror -c ~apt-mirror/var/clean.sh
 
 Introducció de nous miralls
 ---------------------------
@@ -147,19 +141,19 @@ Servidor
 
 Poseu en marxa la interfície LAN:
 
-    $ sudo ip address add 10.0.0.10/8 dev eth2
+    sudo ip address add 10.0.0.10/8 dev eth2
 
 Encengueu el dnsmasq:
 
-    $ sudo service dnsmasq restart
+    sudo service dnsmasq restart
 
 Encengueu l'apache:
 
-    $ sudo service apache2 restart
+    sudo service apache2 restart
 
 Si voleu fer NAT amb la WiFi:
 
-    $ sudo /usr/local/bin/mirror-nat
+    sudo /usr/local/bin/mirror-nat
 
 Clients
 -------
