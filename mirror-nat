@@ -1,7 +1,11 @@
 #!/bin/sh
 
-WAN=eth3
-LAN=eth2
+if [ -z "$LAN" ] || [ -z "$WAN" ]
+then
+    echo "Usage: LAN=eth0 WAN=eth1 $0" 1>&2
+    echo "you must define LAN and WAN interfaces first!" 1>&2
+    exit 1
+fi
 
 # Flush all the rules in filter and nat tables
 iptables --flush

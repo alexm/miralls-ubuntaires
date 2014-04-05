@@ -57,11 +57,18 @@ Serveis del servidor
 Configuració dels miralls
 -------------------------
 
-Copieu la configuració de les interfícies de xarxa:
+La configuració de xarxa suposa que la interfície **eth2** és la de cable i la **eth3** la WiFi.
+
+Definiu les variables d'entorn per les interfícies de xarxa:
+
+    export LAN=eth2
+    export WAN=eth3
+
+Adapteu i copieu la configuració de les interfícies de xarxa:
 
     sudo cp -b interfaces /etc/network/interfaces
 
-Instal·leu el paquet **dnsmasq** i copieu la configuració a **/etc/dnsmasq.conf**:
+Instal·leu el paquet **dnsmasq**, adapteu i copieu la configuració a **/etc/dnsmasq.conf** (vegeu el paràmetre *no-dhcp-interface=eth2*):
 
     sudo cp -b dnsmasq.conf /etc/dnsmasq.conf
 
@@ -95,7 +102,7 @@ Actualització dels miralls
 
 Obtingueu una IP pel cable:
 
-    sudo dhclient eth2
+    sudo dhclient $LAN
 
 Genereu la llista de fonts del mirall:
 
@@ -139,9 +146,14 @@ Maquinari
 Servidor
 --------
 
+Definiu les interfícies de xarxa:
+
+    export LAN=eth2
+    export WAN=eth3
+
 Poseu en marxa la interfície LAN:
 
-    sudo ip address add 10.0.0.10/8 dev eth2
+    sudo ip address add 10.0.0.10/8 dev $LAN
 
 Encengueu el dnsmasq:
 
