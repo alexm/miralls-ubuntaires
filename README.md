@@ -56,7 +56,30 @@ Serveis del servidor
 Configuració dels miralls
 -------------------------
 
-TBD
+Copieu la configuració de les interfícies de xarxa:
+
+    $ sudo cp -b interfaces /etc/network/interfaces
+
+Instal·leu el paquet **dnsmasq** i copieu la configuració a **/etc/dnsmasq.conf**:
+
+    $ sudo cp -b dnsmasq.conf /etc/dnsmasq.conf
+
+Instal·leu el paquet **apt-mirror** i executeu les ordres següents per preparar els miralls:
+
+    $ sudo -i
+    # cd ~apt-mirror/mirror
+    # ln -s ftp.caliu.cat archive.ubuntu.com
+    # ln -s archive.ubuntu.com es.archive.ubuntu.com
+    # ln -s archive.ubuntu.com ad.archive.ubuntu.com
+    # ln -s archive.ubuntu.com us.archive.ubuntu.com
+    # ln -s archive.ubuntu.com rsync.archive.ubuntu.com
+
+Instal·leu el paquet **apache2** i executeu les ordres següents per servir els mirralls:
+
+    $ sudo -i
+    # cd /var/www
+    # ln -s ../spool/apt-mirror/mirror/changelogs.ubuntu.com changelogs
+    # ln -s ../spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu ubuntu
 
 Actualització dels miralls
 --------------------------
