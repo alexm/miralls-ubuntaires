@@ -81,6 +81,10 @@ Instal·leu el paquet **apache2** i executeu les ordres següents per servir els
     # ln -s ../spool/apt-mirror/mirror/changelogs.ubuntu.com changelogs
     # ln -s ../spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu ubuntu
 
+Copieu a */usr/local/bin* els guions que necessitareu més endavant:
+
+    $ sudo cp mirror-list mirror-upgrader mirror-changelogs mirror-nat /usr/local/bin
+
 Actualització dels miralls
 --------------------------
 
