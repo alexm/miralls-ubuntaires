@@ -1,0 +1,7 @@
+auto lo
+iface lo inet loopback
+
+auto eth2
+iface eth2 inet manual
+    address 10.0.0.10
+    netmask 255.0.0.0
