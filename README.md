@@ -28,15 +28,15 @@ Instal·lació bàsica del servidor
 *   Feu una instal·lació normal fins que arribeu a la selecció del disc.
 *   Trieu un particionat amb LVM sobre el disc dur extern que teniu endollat al port USB.
 *   La taula de particions del disc ha de contenir 2 particions primàries:
-    *   La primera de tipus Linux (83) per al /boot amb mida entre 250 MB.
-    *   La segona de tipus Linux LVM (8e) per al sistema amb la resta del disc.
-    *   La segona partició serà el volum físic d'un grup de volums anomenat ubuntaires, que conté aquests volums lògics:
-        *   root per al sistema, amb 8 GB.
-        *   swap per al fitxer d'intercanvi, amb 2 GB.
-        *   mirror per als miralls, amb la mida que calculeu que us cal (uns quants centenars de GB).
+    *   La primera de tipus **Linux** (83) per al **/boot** amb mida entre 250 MB.
+    *   La segona de tipus **Linux LVM** (8e) per al sistema amb la resta del disc.
+    *   La segona partició serà el volum físic d'un grup de volums anomenat **ubuntaires**, que conté aquests volums lògics:
+        *   **root** per al sistema, amb 8 GB.
+        *   **swap** per al fitxer d'intercanvi, amb 2 GB.
+        *   **mirror** per als miralls, amb la mida que calculeu que us cal (uns quants centenars de GB).
     *   No assigneu tot l'espai disponible als miralls per si us cal ampliar algun dels altres volums lògics en algun moment.
-    *   Formateu la partició de /boot i els volums lògics amb el sistema de fitxers ext3 o ext4.
-*   Quan l'instal·lador us demani quin usuari voleu crear, indiqueu-li que es diu ubuntaires i la contrasenya ubuntu.cat (si us interessa que algú pugui connectar remotament a aquest ordinador, trieu una contrasenya més robusta).
+    *   Formateu la partició de **/boot** i els volums lògics amb el sistema de fitxers ext3 o ext4.
+*   Quan l'instal·lador us demani quin usuari voleu crear, indiqueu-li que es diu **ubuntaires** i la contrasenya **ubuntu.cat** (si us interessa que algú pugui connectar remotament a aquest ordinador, trieu una contrasenya més robusta).
 *   Quan l'instal·lador us demani quins serveis voleu instal·lar, indiqueu-li que cap (en concret, desactiveu el servei SSH si voleu que ningú pugui connectar remotament).
 
 Serveis del servidor
