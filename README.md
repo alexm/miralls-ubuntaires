@@ -86,9 +86,9 @@ Instal·leu el paquet **apt-mirror** i executeu les ordres següents per prepara
 
 Instal·leu el paquet **apache2** i executeu les ordres següents per servir els mirralls:
 
-    cd /var/www
-    sudo ln -s ../spool/apt-mirror/mirror/changelogs.ubuntu.com changelogs
-    sudo ln -s ../spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu ubuntu
+    cd /var/www/html
+    sudo ln -s ../../spool/apt-mirror/mirror/changelogs.ubuntu.com changelogs
+    sudo ln -s ../../spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu ubuntu
 
 Copieu a */usr/local/bin* els guions que necessitareu més endavant:
 
