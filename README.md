@@ -33,7 +33,7 @@ Instal·lació bàsica del servidor
     *   La segona partició serà el volum físic d'un grup de volums anomenat **ubuntaires**, que conté aquests volums lògics:
         *   **root** per al sistema, amb 8 GB.
         *   **swap** per al fitxer d'intercanvi, amb 2 GB.
-        *   **mirror** per als miralls, amb la mida que calculeu que us cal (uns quants centenars de GB).
+        *   **mirror** per als miralls, amb la mida que calculeu que us cal (uns quants centenars de GB). Per exemple, podeu muntar-lo al directori **/srv/mirror** o qualsevol altre que us agradi més.
     *   No assigneu tot l'espai disponible als miralls per si us cal ampliar algun dels altres volums lògics en algun moment.
     *   Formateu la partició de **/boot** i els volums lògics amb el sistema de fitxers ext3 o ext4.
 *   Quan l'instal·lador us demani quin usuari voleu crear, indiqueu-li que es diu **ubuntaires** i la contrasenya **ubuntu.cat** (si us interessa que algú pugui connectar remotament a aquest ordinador, trieu una contrasenya més robusta).
@@ -72,8 +72,11 @@ Instal·leu el paquet **dnsmasq**, adapteu i copieu la configuració a **/etc/dn
 
     sudo cp -b dnsmasq.conf /etc/dnsmasq.conf
 
-Instal·leu el paquet **apt-mirror** i executeu les ordres següents per preparar els miralls:
+Instal·leu el paquet **apt-mirror** i executeu les ordres següents per preparar els miralls (utilitzarem el directori **/srv/mirror** que té muntat el volum pels miralls):
 
+    mv ~apt-mirror/* /srv/mirror/
+    rmdir ~apt-mirror
+    ln -sf ../../srv/mirror ~apt-mirror
     cd ~apt-mirror/mirror
     sudo ln -s ftp.caliu.cat archive.ubuntu.com
     sudo ln -s archive.ubuntu.com es.archive.ubuntu.com
