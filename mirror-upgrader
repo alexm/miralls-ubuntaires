@@ -16,7 +16,7 @@ for dist in ${DISTS_ALIVE}
 do
     for dir in ${dist} ${dist}-updates ${dist}-security
     do
-        cd "${HOME}/mirror" && "${WGET}" "${MIRROR}/ubuntu/dists/${dir}/main/dist-upgrader-all/current/"
+        cd "${HOME}/mirror" && ${WGET} "${MIRROR}/ubuntu/dists/${dir}/main/dist-upgrader-all/current/"
         if [ $? -eq 0 ]
         then
             echo "ok $n - $dir"
